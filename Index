@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Christian Community Center — Turin, NY</title>
+<meta name="description" content="A warm, welcoming community space in Turin, New York. Sunday worship, youth group, and a gymnasium available for community rentals." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,700;9..144,900&family=Inter:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+  /* =============== HOMEPAGE SPECIFIC =============== */
+
+  /* HERO */
+  .home-hero {
+    padding: clamp(4rem, 12vh, 9rem) 0 clamp(3rem, 8vh, 6rem);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .home-hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 70%;
+    height: 140%;
+    background: radial-gradient(ellipse at center, rgba(122, 174, 196, 0.22) 0%, rgba(201, 185, 154, 0.12) 40%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .home-hero .container { position: relative; z-index: 1; }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 6.2rem);
+  }
+  .hero-title .italic {
+    font-style: italic;
+    font-weight: var(--w-light);
+    display: block;
+    color: var(--sky-blue-deep);
+  }
+
+  /* Building card — illustrated hero visual */
+  .building-card {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--sandstone);
+    box-shadow: 0 30px 60px -30px rgba(92, 68, 50, 0.4),
+                0 1px 0 rgba(255,255,255,0.4) inset;
+  }
+  .building-card svg { display: block; width: 100%; height: 100%; }
+
+  .building-card .badge {
+    position: absolute;
+    top: 1.3rem;
+    left: 1.3rem;
+    background: rgba(242, 237, 228, 0.93);
+    backdrop-filter: blur(6px);
+    color: var(--ink);
+    padding: 0.55rem 0.9rem;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: var(--w-med);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .building-card .badge::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--sky-blue);
+    border-radius: 50%;
+  }
+
+  /* INFO STRIP */
+  .info-strip {
+    padding: 3.5rem 0;
+    border-top: 1px solid rgba(122, 92, 69, 0.14);
+    border-bottom: 1px solid rgba(122, 92, 69, 0.14);
+    background: rgba(201, 185, 154, 0.14);
+  }
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+  @media (max-width: 780px) {
+    .info-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+  .info-item { display: flex; flex-direction: column; gap: 0.4rem; }
+  .info-item .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: var(--w-med);
+  }
+  .info-item .val {
+    font-family: var(--font-display);
+    font-weight: var(--w-bold);
+    font-size: 1.35rem;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .info-item .sub { font-size: 0.9rem; color: var(--ink-soft); }
+
+  /* OFFERINGS — three feature cards */
+  .offerings {
+    padding: clamp(5rem, 10vh, 8rem) 0;
+  }
+  .offer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 900px) {
+    .offer-grid { grid-template-columns: 1fr; }
+  }
+
+  .offer-card {
+    background: var(--bg-alt);
+    border: 1px solid rgba(122, 92, 69, 0.12);
+    border-radius: var(--radius-lg);
+    padding: 2.4rem 2rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s var(--ease);
+  }
+  .offer-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--sky-blue);
+    box-shadow: 0 24px 50px -28px rgba(92, 68, 50, 0.35);
+  }
+  .offer-card .num {
+    font-family: var(--font-display);
+    font-weight: var(--w-light);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--mist-gray);
+    margin-bottom: 2.2rem;
+  }
+  .offer-card h3 {
+    margin-bottom: 0.9rem;
+    font-size: 1.65rem;
+  }
+  .offer-card p {
+    color: var(--ink-soft);
+    font-size: 0.97rem;
+    margin-bottom: 1.8rem;
+    flex: 1;
+  }
+  .offer-card .offer-link {
+    font-family: var(--font-body);
+    font-weight: var(--w-med);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.3s var(--ease), color 0.3s var(--ease);
+  }
+  .offer-card .offer-link:hover {
+    gap: 0.85rem;
+    color: var(--sky-blue-deep);
+  }
+
+  /* CTA BAND */
+  .cta-band {
+    margin-top: 2rem;
+    background: var(--warm-brown);
+    color: var(--linen);
+    border-radius: var(--radius-lg);
+    padding: clamp(3rem, 7vw, 5rem) clamp(2rem, 6vw, 4.5rem);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 85% 30%, rgba(122, 174, 196, 0.28) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .cta-band .inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  @media (max-width: 780px) {
+    .cta-band .inner { grid-template-columns: 1fr; }
+  }
+  .cta-band h2 {
+    color: var(--linen);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    margin-bottom: 0.8rem;
+  }
+  .cta-band p {
+    color: var(--sandstone);
+    max-width: 520px;
+    font-size: 1.05rem;
+  }
+  .cta-band .btn-accent { justify-self: start; }
+  @media (max-width: 780px) { .cta-band .btn-accent { justify-self: stretch; justify-content: center; } }
+
+  /* ============ EVENT PROMO BANNER ============ */
+  .event-promo {
+    padding: clamp(2rem, 5vh, 3.5rem) 0 0;
+  }
+  .promo-card {
+    background: var(--linen-deep);
+    border: 1px solid rgba(122, 92, 69, 0.18);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.6rem, 3vw, 2.2rem) clamp(1.8rem, 3.5vw, 2.8rem);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: clamp(1.2rem, 3vw, 2.2rem);
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s var(--ease);
+  }
+  .promo-card:hover {
+    border-color: var(--sky-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 24px 50px -30px rgba(92, 68, 50, 0.4);
+  }
+  .promo-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--sky-blue);
+  }
+
+  .promo-date {
+    background: var(--warm-brown);
+    color: var(--linen);
+    padding: 1rem 1.3rem;
+    border-radius: var(--radius);
+    text-align: center;
+    min-width: 92px;
+  }
+  .promo-date .m {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sandstone);
+    font-weight: var(--w-med);
+    display: block;
+  }
+  .promo-date .d {
+    font-family: var(--font-display);
+    font-weight: var(--w-black);
+    font-size: 2.4rem;
+    line-height: 1;
+    margin: 0.15rem 0 0.1rem;
+    letter-spacing: -0.03em;
+    display: block;
+  }
+  .promo-date .wd {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: var(--w-light);
+    font-size: 0.82rem;
+    color: var(--sky-blue);
+    display: block;
+  }
+
+  .promo-content .tag {
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sky-blue-deep);
+    font-weight: var(--w-med);
+    display: inline-block;
+    margin-bottom: 0.35rem;
+  }
+  .promo-content h3 {
+    font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+    margin-bottom: 0.3rem;
+    line-height: 1.15;
+  }
+  .promo-content p {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    max-width: 560px;
+  }
+
+  .promo-cta {
+    font-family: var(--font-body);
+    font-weight: var(--w-med);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.9rem 1.4rem;
+    border: 1.5px solid var(--ink);
+    border-radius: var(--radius);
+    transition: all 0.3s var(--ease);
+    white-space: nowrap;
+  }
+  .promo-cta:hover {
+    background: var(--ink);
+    color: var(--linen);
+    gap: 0.85rem;
+  }
+
+  @media (max-width: 780px) {
+    .promo-card { grid-template-columns: auto 1fr; }
+    .promo-cta { grid-column: 1 / -1; justify-content: center; }
+  }
+  @media (max-width: 480px) {
+    .promo-card { grid-template-columns: 1fr; text-align: center; }
+    .promo-date { justify-self: center; }
+    .promo-content .tag, .promo-content h3 { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<!-- =================== NAV =================== -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">CCC</span>
+      <span>Christian Community Center</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="youth-group.html">Youth Group</a></li>
+      <li><a href="rent-ccc.html">Rent CCC</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+<!-- =================== HERO =================== -->
+<section class="home-hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow reveal d-1">Turin, New York · Est. community</span>
+        <h1 class="hero-title reveal d-2">
+          Rooted here.<br>
+          <span class="italic">Open to all.</span>
+        </h1>
+        <p class="hero-sub reveal d-3">
+          A warm, welcoming space in the heart of Turin — a place for worship,
+          for young people to grow, and for the community to gather.
+        </p>
+        <div class="hero-actions reveal d-4">
+          <a href="rent-ccc.html" class="btn btn-primary">
+            Rent the Space <span class="arrow">→</span>
+          </a>
+          <a href="about.html" class="btn btn-ghost">
+            Learn more
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal-slow">
+        <div class="building-card">
+          <span class="badge">Open &amp; Welcoming</span>
+          <!-- Stylized illustration of a simple community building -->
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#b8cdd6"/>
+                <stop offset="60%" stop-color="#9DAAB0"/>
+                <stop offset="100%" stop-color="#c9b99a"/>
+              </linearGradient>
+              <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#d9c9a8"/>
+                <stop offset="100%" stop-color="#b8a586"/>
+              </linearGradient>
+              <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#8a6950"/>
+                <stop offset="100%" stop-color="#5c4432"/>
+              </linearGradient>
+              <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#a4a887"/>
+                <stop offset="100%" stop-color="#7a8068"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Sky -->
+            <rect x="0" y="0" width="400" height="340" fill="url(#sky)"/>
+
+            <!-- Sun -->
+            <circle cx="310" cy="90" r="34" fill="#F2EDE4" opacity="0.55"/>
+            <circle cx="310" cy="90" r="22" fill="#F2EDE4" opacity="0.75"/>
+
+            <!-- Distant tree line -->
+            <path d="M0,285 Q30,265 55,278 Q85,258 115,275 Q145,260 175,275 Q210,258 245,278 Q280,262 310,278 Q340,265 400,280 L400,340 L0,340 Z" fill="#7A5C45" opacity="0.25"/>
+
+            <!-- Ground -->
+            <rect x="0" y="330" width="400" height="170" fill="url(#grass)"/>
+
+            <!-- Building shadow -->
+            <ellipse cx="200" cy="420" rx="165" ry="10" fill="#000" opacity="0.15"/>
+
+            <!-- Building body -->
+            <rect x="60" y="220" width="280" height="190" fill="url(#wall)"/>
+
+            <!-- Roof -->
+            <polygon points="45,225 200,120 355,225" fill="url(#roof)"/>
+            <polygon points="45,225 200,120 355,225 355,240 200,138 45,240" fill="#000" opacity="0.12"/>
+
+            <!-- Cross on gable -->
+            <rect x="196" y="148" width="8" height="34" fill="#F2EDE4"/>
+            <rect x="186" y="158" width="28" height="7" fill="#F2EDE4"/>
+
+            <!-- Door -->
+            <rect x="180" y="300" width="40" height="110" fill="#5c4432"/>
+            <rect x="184" y="305" width="32" height="100" fill="#7A5C45"/>
+            <circle cx="212" cy="358" r="1.8" fill="#C9B99A"/>
+            <!-- Door arch top -->
+            <path d="M180,300 Q200,285 220,300 Z" fill="#5c4432"/>
+
+            <!-- Windows -->
+            <g>
+              <rect x="95" y="260" width="46" height="68" fill="#7AAEC4" opacity="0.75"/>
+              <rect x="95" y="260" width="46" height="68" fill="none" stroke="#5c4432" stroke-width="3"/>
+              <line x1="118" y1="260" x2="118" y2="328" stroke="#5c4432" stroke-width="2"/>
+              <line x1="95" y1="294" x2="141" y2="294" stroke="#5c4432" stroke-width="2"/>
+            </g>
+            <g>
+              <rect x="259" y="260" width="46" height="68" fill="#7AAEC4" opacity="0.75"/>
+              <rect x="259" y="260" width="46" height="68" fill="none" stroke="#5c4432" stroke-width="3"/>
+              <line x1="282" y1="260" x2="282" y2="328" stroke="#5c4432" stroke-width="2"/>
+              <line x1="259" y1="294" x2="305" y2="294" stroke="#5c4432" stroke-width="2"/>
+            </g>
+
+            <!-- Foundation line -->
+            <rect x="60" y="405" width="280" height="8" fill="#5c4432"/>
+
+            <!-- Path to door -->
+            <polygon points="180,410 220,410 240,500 160,500" fill="#C9B99A" opacity="0.7"/>
+
+            <!-- Trees -->
+            <circle cx="30" cy="360" r="30" fill="#7a8068"/>
+            <rect x="27" y="380" width="6" height="25" fill="#5c4432"/>
+            <circle cx="375" cy="355" r="34" fill="#7a8068"/>
+            <rect x="372" y="380" width="6" height="28" fill="#5c4432"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== EVENT PROMO =================== -->
+<section class="event-promo">
+  <div class="container">
+    <a href="events.html" class="promo-card reveal d-1" style="text-decoration:none; color:inherit;">
+      <div class="promo-date">
+        <span class="m">May</span>
+        <span class="d">02</span>
+        <span class="wd">Saturday</span>
+      </div>
+      <div class="promo-content">
+        <span class="tag">Upcoming Event · 8 AM – 1 PM</span>
+        <h3>3rd Annual Community Give &amp; Take</h3>
+        <p>Free community swap — bring what you can, take what you need. No money changes hands.</p>
+      </div>
+      <span class="promo-cta">Details <span class="arrow">→</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- =================== INFO STRIP =================== -->
+<section class="info-strip">
+  <div class="container">
+    <div class="info-grid">
+      <div class="info-item reveal d-1">
+        <span class="label">Sunday Worship</span>
+        <span class="val">10:00 AM</span>
+        <span class="sub">Every Sunday morning</span>
+      </div>
+      <div class="info-item reveal d-2">
+        <span class="label">Find us</span>
+        <span class="val">4269 E Rd</span>
+        <span class="sub">Turin, NY 13473</span>
+      </div>
+      <div class="info-item reveal d-3">
+        <span class="label">Get in touch</span>
+        <span class="val">315-771-7968</span>
+        <span class="sub">cccturin@gmail.com</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== OFFERINGS =================== -->
+<section class="offerings">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">What we offer</span>
+        <h2 style="margin-top: 1.2rem;">Three doors,<br>one welcome.</h2>
+      </div>
+      <p class="lead">
+        CCC is a small place that does a few things with care — a weekly
+        gathering, a home for local youth, and a room big enough for the
+        whole community to borrow when they need one.
+      </p>
+    </div>
+
+    <div class="offer-grid">
+      <article class="offer-card">
+        <span class="num">— 01</span>
+        <h3>Sunday Service</h3>
+        <p>
+          Join us every Sunday morning at 10:00 AM for worship and fellowship.
+          Come as you are — no expectations, just an open door.
+        </p>
+        <a href="about.html" class="offer-link">About us →</a>
+      </article>
+
+      <article class="offer-card">
+        <span class="num">— 02</span>
+        <h3>Youth Group</h3>
+        <p>
+          Thursday evenings, September through June. A place for young people
+          to build lasting friendships and grow in a supportive environment.
+        </p>
+        <a href="youth-group.html" class="offer-link">Learn more →</a>
+      </article>
+
+      <article class="offer-card">
+        <span class="num">— 03</span>
+        <h3>Rent the Space</h3>
+        <p>
+          Our gymnasium and facilities are available for community events,
+          meetings, celebrations, and gatherings. Check availability and book online.
+        </p>
+        <a href="rent-ccc.html" class="offer-link">Check dates →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CTA BAND =================== -->
+<section style="padding-top:0;">
+  <div class="container">
+    <div class="cta-band">
+      <div class="inner">
+        <div>
+          <h2>Need a space for something?</h2>
+          <p>
+            Birthdays, meetings, reunions, practices — our gym and facilities
+            are open to the community. See live availability on our public
+            calendar, then send a request. It's simple.
+          </p>
+        </div>
+        <a href="rent-ccc.html" class="btn btn-accent">
+          Rent CCC <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =================== FOOTER =================== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <p class="big">Rooted here.<br>Open to all.</p>
+      <p>A warm, welcoming space in the heart of Turin, New York.</p>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <p>4269 E Rd<br>Turin, NY 13473</p>
+      <p style="margin-top:0.8rem;">Sundays · 10:00 AM</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p><a href="tel:+13157717968">315-771-7968</a></p>
+      <p><a href="mailto:cccturin@gmail.com">cccturin@gmail.com</a></p>
+      <p style="margin-top:1.2rem;">
+        <a href="index.html">Home</a> · <a href="about.html">About</a><br>
+        <a href="events.html">Events</a> · <a href="youth-group.html">Youth Group</a><br>
+        <a href="rent-ccc.html">Rent CCC</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="yr"></span> Christian Community Center · 501(c)(3) Nonprofit</span>
+    <span>Turin, New York</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
