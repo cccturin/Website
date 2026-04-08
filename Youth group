@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Youth Group — Christian Community Center</title>
-<meta name="description" content="CCC's Youth Group meets every Thursday from 6:30–8:30 PM, September through June, in Turin, New York." />
+<meta name="description" content="CCC Youth Group meets every Thursday 6:30–8:30 PM, September through June — weekly discipleship, friendships, and honest conversation for students in southern Lewis County." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -188,11 +188,12 @@
     <span class="eyebrow reveal d-1">Thursdays · 6:30–8:30 PM</span>
     <h1 class="reveal d-2" style="margin-top: 1.3rem;">
       Youth Group<br>
-      <span class="italic">is for you.</span>
+      <span class="italic">every Thursday.</span>
     </h1>
     <p class="hero-sub reveal d-3">
-      A weekly landing spot for young people in Turin — games, hangout time,
-      honest conversation, and friendships that stick around long after Thursday.
+      A weekly gathering for students in southern Lewis County — real friendships,
+      honest conversation, games, food, and adults who take faith seriously and
+      take young people seriously too.
     </p>
 
     <!-- Schedule panel -->
@@ -235,15 +236,16 @@
       </div>
       <div>
         <p>
-          Youth Group at CCC is exactly what it sounds like — a chill weeknight
-          gathering where young people can hang out, play, talk, and be themselves
-          in a space that's built to welcome them.
+          Youth Group at CCC is a weeknight gathering where students can hang out,
+          play, eat, and wrestle with real questions about faith and life. We meet
+          in our gym and common areas, and every week looks a little different —
+          games, food, teaching from Scripture, and plenty of time to actually talk.
         </p>
         <p>
-          We meet in our gymnasium and common areas. There's usually a game or two,
-          some food, and always time to actually talk about what's going on in life.
-          No experience required, no sign-up needed — first-time visitors and regulars
-          are equally welcome.
+          Our goal isn't to entertain students — it's to disciple them. We want
+          every young person who walks in to encounter Jesus, build real
+          friendships, and grow into the kind of faith that holds up under pressure.
+          First-time visitors and regulars are equally welcome.
         </p>
 
         <div class="contact-cta">
@@ -262,8 +264,8 @@
 <footer class="footer">
   <div class="footer-inner">
     <div>
-      <p class="big">Rooted here.<br>Open to all.</p>
-      <p>A warm, welcoming space in the heart of Turin, New York.</p>
+      <p class="big">Rooted here.<br>For our neighbors.</p>
+      <p>A church for southern Lewis County — Turin, New York.</p>
     </div>
     <div>
       <h4>Visit</h4>
