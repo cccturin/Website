@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Events — Christian Community Center</title>
+<meta name="description" content="Upcoming events at Christian Community Center in Turin, NY — including the 3rd Annual Community Give & Take on Saturday, May 2, 2026." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,700;9..144,900&family=Inter:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+  /* ================ EVENTS PAGE ================ */
+
+  .events-hero {
+    padding: clamp(4rem, 10vh, 7rem) 0 clamp(2rem, 5vh, 3.5rem);
+    position: relative;
+    overflow: hidden;
+  }
+  .events-hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 55%;
+    height: 150%;
+    background: radial-gradient(ellipse at center, rgba(122, 174, 196, 0.2) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .events-hero .container { position: relative; }
+  .events-hero h1 {
+    font-size: clamp(2.8rem, 7.5vw, 5.6rem);
+  }
+  .events-hero h1 .italic {
+    font-style: italic;
+    font-weight: var(--w-light);
+    color: var(--sky-blue-deep);
+    display: block;
+  }
+
+  /* ===== FEATURED EVENT CARD ===== */
+  .featured-event {
+    padding: clamp(2rem, 5vh, 4rem) 0 clamp(4rem, 8vh, 6rem);
+  }
+
+  .event-card {
+    background: var(--warm-brown);
+    color: var(--linen);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 30px 70px -35px rgba(92, 68, 50, 0.5);
+  }
+  .event-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 85% 15%, rgba(122, 174, 196, 0.3) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .event-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='ne'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23ne)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.08;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  .event-card-inner {
+    position: relative;
+    z-index: 1;
+    padding: clamp(2.5rem, 5vw, 4rem);
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .event-card-inner { grid-template-columns: 1fr; }
+  }
+
+  .event-flag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: rgba(122, 174, 196, 0.22);
+    color: var(--sky-blue);
+    padding: 0.5rem 0.95rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: var(--w-med);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .event-flag::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    background: var(--sky-blue);
+    border-radius: 50%;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(0.85); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+
+  .event-card h2 {
+    color: var(--linen);
+    font-size: clamp(2rem, 4.2vw, 3.2rem);
+    line-height: 1.02;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.025em;
+  }
+  .event-card h2 .italic {
+    font-style: italic;
+    font-weight: var(--w-light);
+    color: var(--sky-blue);
+  }
+
+  .event-description {
+    color: var(--sandstone);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 560px;
+  }
+
+  .event-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Event card .btn overrides to work on dark background */
+  .event-card .btn-accent {
+    background: var(--sky-blue);
+    color: var(--accent-ink);
+  }
+  .event-card .btn-accent:hover {
+    background: #fff;
+  }
+  .event-card .btn-ghost {
+    border-color: var(--sandstone);
+    color: var(--linen);
+  }
+  .event-card .btn-ghost:hover {
+    background: var(--linen);
+    color: var(--warm-brown-deep);
+  }
+
+  /* Right column: date + facts panel */
+  .event-facts {
+    background: rgba(242, 237, 228, 0.08);
+    border: 1px solid rgba(242, 237, 228, 0.15);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    backdrop-filter: blur(4px);
+  }
+
+  .date-block {
+    border-bottom: 1px solid rgba(242, 237, 228, 0.2);
+    padding-bottom: 1.4rem;
+    margin-bottom: 1.4rem;
+  }
+  .date-block .month {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sandstone);
+    font-weight: var(--w-med);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .date-block .day {
+    font-family: var(--font-display);
+    font-weight: var(--w-black);
+    font-size: clamp(3.2rem, 6vw, 4.5rem);
+    line-height: 0.9;
+    color: var(--linen);
+    letter-spacing: -0.04em;
+    display: block;
+  }
+  .date-block .weekday {
+    display: block;
+    margin-top: 0.35rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: var(--w-light);
+    font-size: 1.15rem;
+    color: var(--sky-blue);
+  }
+
+  .fact-line {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem 0;
+  }
+  .fact-line + .fact-line {
+    border-top: 1px solid rgba(242, 237, 228, 0.12);
+  }
+  .fact-line .k {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sandstone);
+    font-weight: var(--w-med);
+  }
+  .fact-line .v {
+    font-family: var(--font-display);
+    font-weight: var(--w-bold);
+    font-size: 1.05rem;
+    color: var(--linen);
+    line-height: 1.3;
+  }
+  .fact-line a {
+    color: var(--linen);
+    text-decoration: none;
+    transition: color 0.3s var(--ease);
+  }
+  .fact-line a:hover { color: var(--sky-blue); }
+
+  /* ===== DETAILS SECTION ===== */
+  .event-details {
+    padding: clamp(3rem, 7vh, 5rem) 0;
+    border-top: 1px solid rgba(122, 92, 69, 0.14);
+  }
+
+  .details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .details-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .details-grid h2 {
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+  }
+  .details-grid .lead {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 1.3rem;
+    max-width: 620px;
+  }
+  .details-grid strong { color: var(--ink); font-weight: var(--w-med); }
+
+  /* Guidelines + dropoff — side by side panels */
+  .logistics {
+    padding: clamp(3rem, 7vh, 5rem) 0;
+  }
+  .logistics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  @media (max-width: 820px) {
+    .logistics-grid { grid-template-columns: 1fr; }
+  }
+
+  .panel {
+    background: var(--bg-alt);
+    border: 1px solid rgba(122, 92, 69, 0.14);
+    border-radius: var(--radius-lg);
+    padding: 2.4rem 2.2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--sky-blue);
+  }
+  .panel.warm::before { background: var(--warm-brown); }
+
+  .panel h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+  }
+  .panel .sub {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: var(--w-med);
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  .guideline-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .guideline-list li {
+    display: flex;
+    gap: 0.9rem;
+    font-size: 0.97rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .guideline-list li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    background: var(--sky-blue);
+    border-radius: 50%;
+    margin-top: 0.65rem;
+  }
+
+  .dropoff-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .dropoff-list li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px dashed rgba(122, 92, 69, 0.2);
+    align-items: baseline;
+  }
+  .dropoff-list li:last-child { border-bottom: none; }
+  .dropoff-list .date {
+    font-family: var(--font-display);
+    font-weight: var(--w-bold);
+    font-size: 1.05rem;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .dropoff-list .date .day-name {
+    font-style: italic;
+    font-weight: var(--w-light);
+    color: var(--ink-soft);
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 0;
+    margin-top: 0.1rem;
+  }
+  .dropoff-list .time {
+    font-family: var(--font-body);
+    font-weight: var(--w-med);
+    font-size: 0.88rem;
+    letter-spacing: 0.05em;
+    color: var(--sky-blue-deep);
+    white-space: nowrap;
+  }
+
+  /* No more events block */
+  .no-more {
+    padding: clamp(3rem, 6vh, 5rem) 0 clamp(1rem, 3vh, 2rem);
+    text-align: center;
+  }
+  .no-more p {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .no-more em {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--ink);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">CCC</span>
+      <span>Christian Community Center</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html" class="active">Events</a></li>
+      <li><a href="youth-group.html">Youth Group</a></li>
+      <li><a href="rent-ccc.html">Rent CCC</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="events-hero">
+  <div class="container">
+    <span class="eyebrow reveal d-1">Upcoming at CCC</span>
+    <h1 class="reveal d-2" style="margin-top: 1.3rem;">
+      What's happening,<br>
+      <span class="italic">and when.</span>
+    </h1>
+    <p class="hero-sub reveal d-3">
+      Community gatherings, seasonal events, and the occasional something special.
+      Here's what's coming up next.
+    </p>
+  </div>
+</section>
+
+<!-- FEATURED EVENT -->
+<section class="featured-event">
+  <div class="container">
+    <div class="event-card reveal d-1">
+      <div class="event-card-inner">
+
+        <div>
+          <span class="event-flag">Next up</span>
+          <h2>
+            3rd Annual<br>
+            <span class="italic">Community Give &amp; Take</span>
+          </h2>
+          <p class="event-description">
+            A free community swap — no money changes hands. Bring new or
+            lightly-used items to bless others, and take whatever you need.
+            CCC handles anything left over.
+          </p>
+          <div class="event-actions">
+            <a href="https://www.facebook.com/events/2390300328049513" target="_blank" rel="noopener" class="btn btn-accent">
+              RSVP on Facebook <span class="arrow">→</span>
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=4264+East+Road+Turin+NY+13473" target="_blank" rel="noopener" class="btn btn-ghost">
+              Get Directions
+            </a>
+          </div>
+        </div>
+
+        <aside class="event-facts">
+          <div class="date-block">
+            <span class="month">May 2026</span>
+            <span class="day">02</span>
+            <span class="weekday">Saturday</span>
+          </div>
+          <div class="fact-line">
+            <span class="k">Time</span>
+            <span class="v">8:00 AM — 1:00 PM</span>
+          </div>
+          <div class="fact-line">
+            <span class="k">Location</span>
+            <span class="v">
+              <a href="https://www.google.com/maps/search/?api=1&query=4264+East+Road+Turin+NY+13473" target="_blank" rel="noopener">
+                4264 East Road<br>Turin, NY 13473
+              </a>
+            </span>
+          </div>
+          <div class="fact-line">
+            <span class="k">Cost</span>
+            <span class="v">Free · All welcome</span>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section class="event-details">
+  <div class="container">
+    <div class="details-grid">
+      <div>
+        <span class="accent-line"></span>
+        <h2>How it works.</h2>
+      </div>
+      <div>
+        <p class="lead">
+          Join us for CCC's 3rd Annual Community Give &amp; Take! <strong>No money
+          changes hands — everything is free.</strong> Bring any new or lightly-used
+          items that you believe could be a blessing to another person in the
+          community, and take whatever you want or need.
+        </p>
+        <p class="lead">
+          CCC will handle any leftover items at the end of the event, so there's
+          no pressure to take your things back home. Just show up, share what you
+          can, find what you need, and enjoy the morning with your neighbors.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGISTICS: guidelines + drop-off times -->
+<section class="logistics">
+  <div class="container">
+    <div class="logistics-grid">
+
+      <div class="panel">
+        <span class="sub">Before you drop off</span>
+        <h3>Drop-off guidelines</h3>
+        <ul class="guideline-list" style="margin-top:1.4rem;">
+          <li>Nothing large enough to require more than one person to carry — no large furniture.</li>
+          <li>Nothing that would go in your garage sale "free pile" — only items that will truly be a blessing to someone else.</li>
+          <li>Please plan to stay a few minutes to help our volunteers organize your items into the various areas.</li>
+        </ul>
+      </div>
+
+      <div class="panel warm">
+        <span class="sub">The week before the event</span>
+        <h3>Drop-off times</h3>
+        <ul class="dropoff-list" style="margin-top:1.4rem;">
+          <li>
+            <span class="date">April 27<span class="day-name">Monday</span></span>
+            <span class="time">3:00 – 6:00 PM</span>
+          </li>
+          <li>
+            <span class="date">April 28<span class="day-name">Tuesday</span></span>
+            <span class="time">3:00 – 6:00 PM</span>
+          </li>
+          <li>
+            <span class="date">April 29<span class="day-name">Wednesday</span></span>
+            <span class="time">3:00 – 6:00 PM</span>
+          </li>
+          <li>
+            <span class="date">April 30<span class="day-name">Thursday</span></span>
+            <span class="time">3:00 – 6:00 PM</span>
+          </li>
+          <li>
+            <span class="date">May 1<span class="day-name">Friday</span></span>
+            <span class="time">3:00 – 6:00 PM</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- No more events note -->
+<section class="no-more">
+  <div class="container">
+    <p><em>That's everything on the calendar for now.</em><br>
+    Check back soon — or follow us on Facebook to hear about events as they're announced.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <p class="big">Rooted here.<br>Open to all.</p>
+      <p>A warm, welcoming space in the heart of Turin, New York.</p>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <p>4269 E Rd<br>Turin, NY 13473</p>
+      <p style="margin-top:0.8rem;">Sundays · 10:00 AM</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p><a href="tel:+13157717968">315-771-7968</a></p>
+      <p><a href="mailto:cccturin@gmail.com">cccturin@gmail.com</a></p>
+      <p style="margin-top:1.2rem;">
+        <a href="index.html">Home</a> · <a href="about.html">About</a><br>
+        <a href="events.html">Events</a> · <a href="youth-group.html">Youth Group</a><br>
+        <a href="rent-ccc.html">Rent CCC</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="yr"></span> Christian Community Center · 501(c)(3) Nonprofit</span>
+    <span>Turin, New York</span>
+  </div>
+</footer>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>
