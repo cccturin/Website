@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Rent CCC — Christian Community Center</title>
-<meta name="description" content="Rent the gymnasium and facilities at Christian Community Center in Turin, NY. Check live availability and submit a booking request online." />
+<meta name="description" content="Rent the gymnasium and facilities at Christian Community Center in Turin, NY. Check live availability and submit a booking request. Our building is an instrument of ministry — we're glad when you use it." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -236,15 +236,15 @@
 <!-- HERO -->
 <section class="rent-hero">
   <div class="container">
-    <span class="eyebrow reveal d-1">Rent our space</span>
+    <span class="eyebrow reveal d-1">Use our facility</span>
     <h1 class="reveal d-2" style="margin-top: 1.3rem;">
-      Borrow the room.<br>
-      <span class="italic">We'll hold the door.</span>
+      Our building is<br>
+      <span class="italic">here to serve you.</span>
     </h1>
     <p class="hero-sub reveal d-3">
-      Our gymnasium and facilities are open for community events, meetings,
-      celebrations, practices, and gatherings of all kinds. Two steps:
-      find an open slot, then send us a request.
+      Our facility is an instrument of our ministry — open to families, groups,
+      and neighbors across southern Lewis County. Find an open slot on our
+      calendar, then send us a request. We're glad when you use it.
     </p>
   </div>
 </section>
@@ -340,8 +340,8 @@
 <footer class="footer">
   <div class="footer-inner">
     <div>
-      <p class="big">Rooted here.<br>Open to all.</p>
-      <p>A warm, welcoming space in the heart of Turin, New York.</p>
+      <p class="big">Rooted here.<br>For our neighbors.</p>
+      <p>A church for southern Lewis County — Turin, New York.</p>
     </div>
     <div>
       <h4>Visit</h4>
