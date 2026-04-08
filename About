@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>About — Christian Community Center</title>
-<meta name="description" content="About Christian Community Center — a welcoming 501(c)(3) nonprofit serving Turin, NY with Sunday services, youth programs, and community facility rentals." />
+<meta name="description" content="Christian Community Center is a church for southern Lewis County — reaching those who don't yet know Jesus and rooting those who do into fully devoted faith." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -171,6 +171,105 @@
     background: var(--sky-blue-deep);
     border-radius: 50%;
   }
+
+  /* ===== MISSION / VISION panels ===== */
+  .mv-section {
+    padding: clamp(4rem, 9vh, 7rem) 0;
+  }
+  .mv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  @media (max-width: 820px) {
+    .mv-grid { grid-template-columns: 1fr; }
+  }
+
+  .mv-card {
+    background: var(--bg-alt);
+    border: 1px solid rgba(122, 92, 69, 0.14);
+    border-radius: var(--radius-lg);
+    padding: 2.6rem 2.4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .mv-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--warm-brown);
+  }
+  .mv-card.vision::before { background: var(--sky-blue); }
+
+  .mv-card .label {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: var(--w-med);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .mv-card .sub {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: var(--w-light);
+    color: var(--mist-gray);
+    font-size: 0.95rem;
+    margin-bottom: 1.3rem;
+    display: block;
+  }
+  .mv-card h3 {
+    font-size: clamp(1.45rem, 2.5vw, 1.85rem);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .mv-card p {
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+    line-height: 1.65;
+  }
+  .mv-card p + p { margin-top: 0.9rem; }
+
+  /* ===== VALUES ===== */
+  .values-section {
+    padding: clamp(4rem, 9vh, 7rem) 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(201, 185, 154, 0.15) 100%);
+    border-top: 1px solid rgba(122, 92, 69, 0.14);
+  }
+
+  .value-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 2fr;
+    gap: 2.2rem;
+    padding: 2.6rem 0;
+    border-bottom: 1px solid rgba(122, 92, 69, 0.14);
+    align-items: start;
+  }
+  .value-row:last-child { border-bottom: none; }
+  @media (max-width: 820px) {
+    .value-row { grid-template-columns: 1fr; gap: 0.6rem; padding: 2rem 0; }
+  }
+
+  .value-row .num {
+    font-family: var(--font-display);
+    font-weight: var(--w-light);
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--mist-gray);
+  }
+  .value-row h3 {
+    font-size: clamp(1.4rem, 2.6vw, 1.75rem);
+    margin: 0;
+    line-height: 1.15;
+  }
+  .value-row p {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.65;
+    max-width: 620px;
+  }
 </style>
 </head>
 <body>
@@ -202,37 +301,113 @@
   <div class="container">
     <span class="eyebrow reveal d-1">About CCC</span>
     <h1 class="reveal d-2" style="margin-top: 1.3rem;">
-      A small place with<br>
-      <span class="italic">a wide welcome.</span>
+      A church for<br>
+      <span class="italic">southern Lewis County.</span>
     </h1>
     <p class="hero-sub reveal d-3">
-      Christian Community Center serves the Turin, New York community — a gathering
-      spot grounded in faith, open to all, and built on the simple idea that good
-      things happen when neighbors have somewhere to come together.
+      We exist to reach those who don't yet know Jesus, and to root those who
+      do into fully devoted faith — right here where we live.
     </p>
   </div>
 </section>
 
-<!-- STORY -->
-<section class="story">
+<!-- MISSION & VISION -->
+<section class="mv-section">
   <div class="container">
-    <div class="story-grid">
-      <div>
-        <span class="accent-line"></span>
-        <h2>Who we are.</h2>
-      </div>
-      <div>
+    <div class="mv-grid">
+
+      <div class="mv-card">
+        <span class="label">Mission</span>
+        <span class="sub">Why we exist</span>
+        <h3>To be a church for<br>southern Lewis County.</h3>
         <p>
-          CCC is a small community center in Turin, New York — part house of worship,
-          part gathering space, part open door. We host Sunday services, a weekly youth
-          group, and we rent our facilities out to neighbors who need a room.
-        </p>
-        <p>
-          We're a <strong>registered 501(c)(3) nonprofit</strong>, and everything we do
-          is shaped by the community around us. There's nothing flashy here — just a
-          warm, accessible space and people who are glad you stopped by.
+          Reaching those who don't yet know Jesus, and rooting those who do
+          into fully devoted faith.
         </p>
       </div>
+
+      <div class="mv-card vision">
+        <span class="label">Vision</span>
+        <span class="sub">What success looks like</span>
+        <h3>Woven into the fabric<br>of daily community life.</h3>
+        <p>
+          A southern Lewis County where the Christian Community Center is part
+          of everyday life — where our facility is a blessing to every neighbor,
+          our relationships open doors no pulpit could, and no one in our zip
+          code can say they've never encountered the love of Jesus.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Our values</span>
+        <h2 style="margin-top:1.2rem;">How we behave<br>when it's hard.</h2>
+      </div>
+      <p class="lead">
+        Five convictions that shape every decision we make — where we invest,
+        who we serve, and how we show up for our neighbors.
+      </p>
+    </div>
+
+    <div class="value-row">
+      <span class="num">— 01</span>
+      <h3>Rooted Here.</h3>
+      <p>
+        We are not a regional church, a missions church, or a destination
+        church. We are southern Lewis County's church. Every decision we
+        make — where we invest, who we serve, where we show up — is filtered
+        through one question: does this bless our community?
+      </p>
+    </div>
+
+    <div class="value-row">
+      <span class="num">— 02</span>
+      <h3>Relationship Before Proclamation.</h3>
+      <p>
+        We earn the right to be heard by being genuinely present. We build
+        friendships first, not as a strategy, but because that's how Jesus
+        moved through the world. Evangelism here looks like being a good
+        neighbor for a long time.
+      </p>
+    </div>
+
+    <div class="value-row">
+      <span class="num">— 03</span>
+      <h3>The Facility is Ministry.</h3>
+      <p>
+        Our building is not only where the church meets. It is an instrument
+        of mission, open daily to a community that needs it. Every group
+        that walks through our doors is a neighbor we're privileged to
+        serve — and a relationship we're called to cultivate.
+      </p>
+    </div>
+
+    <div class="value-row">
+      <span class="num">— 04</span>
+      <h3>Vibrant Over Predictable.</h3>
+      <p>
+        Humdrum Christianity is not who we are. We bring energy, spontaneity,
+        and life to everything we do — especially worship — because a
+        community that's never been in a church should encounter something
+        worth coming back to.
+      </p>
+    </div>
+
+    <div class="value-row">
+      <span class="num">— 05</span>
+      <h3>From Conversion to Conviction.</h3>
+      <p>
+        A new Christian is a beginning, not a finish line. We celebrate every
+        first step of faith and then walk alongside people until that faith
+        becomes deep, resilient, and fully their own.
+      </p>
     </div>
   </div>
 </section>
@@ -242,31 +417,32 @@
   <div class="container">
     <div class="section-head">
       <div>
-        <span class="eyebrow">What we offer</span>
-        <h2 style="margin-top:1.2rem;">A few things,<br>done with care.</h2>
+        <span class="eyebrow">What we do</span>
+        <h2 style="margin-top:1.2rem;">Worship, discipleship,<br>and an open door.</h2>
       </div>
       <p class="lead">
-        Three ways to be part of what happens at CCC — come on Sunday, send
-        your kids on Thursday, or borrow the room for your own gathering.
+        Three ways our mission takes shape week to week — Sunday gatherings,
+        weekly discipleship for students, and a facility that serves our
+        neighbors all week long.
       </p>
     </div>
 
     <div class="offer-row">
       <span class="num">— 01</span>
-      <h3>Sunday Service</h3>
-      <p>Join us every Sunday morning at <strong>10:00 AM</strong> for worship and fellowship. No dress code, no expectations — just come as you are.</p>
+      <h3>Sunday Worship</h3>
+      <p>Join us every Sunday at <strong>10:00 AM</strong> for vibrant, Scripture-rooted worship. Whether you've been in church your whole life or have never set foot in one, there's a seat for you.</p>
     </div>
 
     <div class="offer-row">
       <span class="num">— 02</span>
-      <h3>Youth Group Programs</h3>
-      <p>Weekly youth group activities designed to help young people build lasting friendships and grow in a supportive environment. <strong>Thursdays, 6:30–8:30 PM</strong>, September through June.</p>
+      <h3>Youth Group</h3>
+      <p>Weekly discipleship for students — games, friendships, honest conversation, and teaching that takes young people seriously. <strong>Thursdays, 6:30–8:30 PM</strong>, September through June.</p>
     </div>
 
     <div class="offer-row">
       <span class="num">— 03</span>
-      <h3>Facility Rentals</h3>
-      <p>Our gymnasium and facilities are available for community events, meetings, celebrations, and gatherings. We welcome inquiries from local organizations, families, and groups looking for a clean, accessible space in the Turin area.</p>
+      <h3>The Facility</h3>
+      <p>Our gym and facilities are available to families, groups, and neighbors across southern Lewis County. Birthdays, practices, reunions, meetings — if you need a room, we're glad to offer ours.</p>
     </div>
   </div>
 </section>
@@ -277,10 +453,10 @@
     <div class="contact-band">
       <div>
         <span class="eyebrow">Get in touch</span>
-        <h2 style="margin-top:1.2rem;">Come visit, or<br>send us a note.</h2>
+        <h2 style="margin-top:1.2rem;">Come visit, or<br>reach out.</h2>
         <p>
           For facility rental inquiries, use the <a href="rent-ccc.html">Rent CCC</a> page — it has live availability and a quick request form.
-          For anything else, email or call us directly. We're happy to hear from you.
+          For anything else, email or call us directly. We'd love to hear from you.
         </p>
         <span class="nonprofit-chip">501(c)(3) Nonprofit</span>
       </div>
@@ -313,8 +489,8 @@
 <footer class="footer">
   <div class="footer-inner">
     <div>
-      <p class="big">Rooted here.<br>Open to all.</p>
-      <p>A warm, welcoming space in the heart of Turin, New York.</p>
+      <p class="big">Rooted here.<br>For our neighbors.</p>
+      <p>A church for southern Lewis County — Turin, New York.</p>
     </div>
     <div>
       <h4>Visit</h4>
@@ -338,7 +514,16 @@
   </div>
 </footer>
 
-<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById("yr").textContent = new Date().getFullYear();
+  // Safety net: force-reveal any stuck animation elements after 1.2s
+  setTimeout(function() {
+    document.querySelectorAll(".reveal, .reveal-slow").forEach(function(el) {
+      el.style.opacity = "1";
+      el.style.transform = "none";
+    });
+  }, 1200);
+</script>
 
 </body>
 </html>
