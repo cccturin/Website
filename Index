@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Christian Community Center — Turin, NY</title>
-<meta name="description" content="A warm, welcoming community space in Turin, New York. Sunday worship, youth group, and a gymnasium available for community rentals." />
+<meta name="description" content="A church for southern Lewis County, rooted in Turin, New York. Sunday worship at 10 AM, weekly youth group, and a facility that serves the community all week long." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -378,14 +378,14 @@
   <div class="container">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow reveal d-1">Turin, New York · Est. community</span>
+        <span class="eyebrow reveal d-1">Turin, NY · Southern Lewis County</span>
         <h1 class="hero-title reveal d-2">
           Rooted here.<br>
-          <span class="italic">Open to all.</span>
+          <span class="italic">For our neighbors.</span>
         </h1>
         <p class="hero-sub reveal d-3">
-          A warm, welcoming space in the heart of Turin — a place for worship,
-          for young people to grow, and for the community to gather.
+          A church for southern Lewis County — reaching those who don't yet know
+          Jesus, and rooting those who do into fully devoted faith.
         </p>
         <div class="hero-actions reveal d-4">
           <a href="rent-ccc.html" class="btn btn-primary">
@@ -498,9 +498,9 @@
         <span class="wd">Saturday</span>
       </div>
       <div class="promo-content">
-        <span class="tag">Upcoming Event · 8 AM – 1 PM</span>
+        <span class="tag">Upcoming · 8 AM – 1 PM</span>
         <h3>3rd Annual Community Give &amp; Take</h3>
-        <p>Free community swap — bring what you can, take what you need. No money changes hands.</p>
+        <p>A free community swap — bring what could bless a neighbor, take what you need. No money changes hands.</p>
       </div>
       <span class="promo-cta">Details <span class="arrow">→</span></span>
     </a>
@@ -535,23 +535,25 @@
   <div class="container">
     <div class="section-head">
       <div>
-        <span class="eyebrow">What we offer</span>
-        <h2 style="margin-top: 1.2rem;">Three doors,<br>one welcome.</h2>
+        <span class="eyebrow">What we're about</span>
+        <h2 style="margin-top: 1.2rem;">Worship, discipleship,<br>and an open door.</h2>
       </div>
       <p class="lead">
-        CCC is a small place that does a few things with care — a weekly
-        gathering, a home for local youth, and a room big enough for the
-        whole community to borrow when they need one.
+        Everything we do flows from a simple conviction: our building, our time,
+        and our relationships are here to bless southern Lewis County. Come
+        worship with us on Sunday, send your kids on Thursday, or borrow the
+        room when your family or group needs one.
       </p>
     </div>
 
     <div class="offer-grid">
       <article class="offer-card">
         <span class="num">— 01</span>
-        <h3>Sunday Service</h3>
+        <h3>Sunday Worship</h3>
         <p>
-          Join us every Sunday morning at 10:00 AM for worship and fellowship.
-          Come as you are — no expectations, just an open door.
+          Join us every Sunday at 10:00 AM for worship that's vibrant, honest,
+          and rooted in Scripture. Whether you've been in church your whole life
+          or never set foot in one, there's a seat for you.
         </p>
         <a href="about.html" class="offer-link">About us →</a>
       </article>
@@ -560,18 +562,20 @@
         <span class="num">— 02</span>
         <h3>Youth Group</h3>
         <p>
-          Thursday evenings, September through June. A place for young people
-          to build lasting friendships and grow in a supportive environment.
+          Thursday evenings, September through June. A place for students to
+          build real friendships, ask hard questions, and be discipled by adults
+          who love them and love Jesus.
         </p>
         <a href="youth-group.html" class="offer-link">Learn more →</a>
       </article>
 
       <article class="offer-card">
         <span class="num">— 03</span>
-        <h3>Rent the Space</h3>
+        <h3>Use Our Facility</h3>
         <p>
-          Our gymnasium and facilities are available for community events,
-          meetings, celebrations, and gatherings. Check availability and book online.
+          Our gym and facilities are available to families, groups, and
+          neighbors across southern Lewis County. The building is an instrument
+          of our mission — we're glad when you use it.
         </p>
         <a href="rent-ccc.html" class="offer-link">Check dates →</a>
       </article>
@@ -585,11 +589,11 @@
     <div class="cta-band">
       <div class="inner">
         <div>
-          <h2>Need a space for something?</h2>
+          <h2>Need the room?</h2>
           <p>
-            Birthdays, meetings, reunions, practices — our gym and facilities
-            are open to the community. See live availability on our public
-            calendar, then send a request. It's simple.
+            Birthdays, reunions, practices, meetings, graduation parties —
+            our facility is here to serve the neighbors we're called to love.
+            See live availability on our public calendar and send a request.
           </p>
         </div>
         <a href="rent-ccc.html" class="btn btn-accent">
@@ -606,8 +610,8 @@
 <footer class="footer">
   <div class="footer-inner">
     <div>
-      <p class="big">Rooted here.<br>Open to all.</p>
-      <p>A warm, welcoming space in the heart of Turin, New York.</p>
+      <p class="big">Rooted here.<br>For our neighbors.</p>
+      <p>A church for southern Lewis County — Turin, New York.</p>
     </div>
     <div>
       <h4>Visit</h4>
@@ -632,7 +636,14 @@
 </footer>
 
 <script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
+  document.getElementById("yr").textContent = new Date().getFullYear();
+  // Safety net: force-reveal any stuck animation elements after 1.2s
+  setTimeout(function() {
+    document.querySelectorAll(".reveal, .reveal-slow").forEach(function(el) {
+      el.style.opacity = "1";
+      el.style.transform = "none";
+    });
+  }, 1200);
 </script>
 
 </body>
