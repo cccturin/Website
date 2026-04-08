@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rent CCC — Christian Community Center</title>
+<meta name="description" content="Rent the gymnasium and facilities at Christian Community Center in Turin, NY. Check live availability and submit a booking request online." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,700;9..144,900&family=Inter:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+  .rent-hero {
+    padding: clamp(4rem, 10vh, 7rem) 0 clamp(2rem, 5vh, 3.5rem);
+    position: relative;
+    overflow: hidden;
+  }
+  .rent-hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 55%;
+    height: 150%;
+    background: radial-gradient(ellipse at center, rgba(122, 174, 196, 0.22) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .rent-hero .container { position: relative; }
+
+  .rent-hero h1 {
+    font-size: clamp(2.8rem, 7.5vw, 5.6rem);
+    max-width: 900px;
+  }
+  .rent-hero h1 .italic {
+    font-style: italic;
+    font-weight: var(--w-light);
+    color: var(--sky-blue-deep);
+  }
+
+  /* Step panels */
+  .step-section {
+    padding: clamp(3rem, 6vh, 5rem) 0;
+  }
+
+  .step {
+    margin-bottom: 4rem;
+  }
+  .step:last-child { margin-bottom: 0; }
+
+  .step-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .step-num {
+    font-family: var(--font-display);
+    font-weight: var(--w-black);
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    line-height: 1;
+    color: var(--sky-blue);
+    letter-spacing: -0.04em;
+  }
+
+  .step-title {
+    flex: 1;
+    min-width: 260px;
+  }
+  .step-title h2 {
+    font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+    margin-bottom: 0.4rem;
+  }
+  .step-title p {
+    color: var(--ink-soft);
+    max-width: 560px;
+    font-size: 1.05rem;
+  }
+
+  /* Embed frames */
+  .embed-frame {
+    background: var(--bg-alt);
+    border: 1px solid rgba(122, 92, 69, 0.15);
+    border-radius: var(--radius-lg);
+    padding: clamp(1rem, 2.5vw, 1.8rem);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .embed-frame::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--sandstone), var(--sky-blue), var(--warm-brown));
+  }
+
+  .calendar-wrapper {
+    position: relative;
+    width: 100%;
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .calendar-wrapper iframe {
+    display: block;
+    width: 100%;
+    min-height: 620px;
+    border: 0;
+  }
+
+  .zap-wrapper {
+    position: relative;
+    width: 100%;
+    background: var(--linen);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .zap-wrapper iframe {
+    display: block;
+    width: 100%;
+    min-height: 2500px;
+    border: 0;
+  }
+
+  .embed-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    background: rgba(122, 174, 196, 0.12);
+    border-radius: var(--radius);
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+  .embed-note .dot {
+    width: 7px;
+    height: 7px;
+    background: var(--sky-blue-deep);
+    border-radius: 50%;
+    margin-top: 0.55rem;
+    flex-shrink: 0;
+  }
+
+  /* Divider between steps */
+  .step-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    color: var(--mist-gray);
+  }
+  .step-divider::before,
+  .step-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(122, 92, 69, 0.25), transparent);
+  }
+  .step-divider svg { color: var(--sky-blue); }
+
+  /* Questions band */
+  .questions-band {
+    margin-top: 4rem;
+    background: var(--linen-deep);
+    border-radius: var(--radius-lg);
+    padding: clamp(2rem, 5vw, 3.5rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  @media (max-width: 720px) {
+    .questions-band { grid-template-columns: 1fr; }
+  }
+  .questions-band h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  .questions-band p {
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+  }
+  .questions-band .contact-inline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .questions-band a {
+    font-family: var(--font-display);
+    font-weight: var(--w-bold);
+    font-size: 1.15rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .questions-band a:hover { color: var(--sky-blue-deep); }
+  .questions-band .k {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: var(--w-med);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">CCC</span>
+      <span>Christian Community Center</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="youth-group.html">Youth Group</a></li>
+      <li><a href="rent-ccc.html" class="active">Rent CCC</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="rent-hero">
+  <div class="container">
+    <span class="eyebrow reveal d-1">Rent our space</span>
+    <h1 class="reveal d-2" style="margin-top: 1.3rem;">
+      Borrow the room.<br>
+      <span class="italic">We'll hold the door.</span>
+    </h1>
+    <p class="hero-sub reveal d-3">
+      Our gymnasium and facilities are open for community events, meetings,
+      celebrations, practices, and gatherings of all kinds. Two steps:
+      find an open slot, then send us a request.
+    </p>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="step-section">
+  <div class="container">
+
+    <!-- STEP 1: CALENDAR -->
+    <div class="step reveal d-1">
+      <div class="step-head">
+        <span class="step-num">01</span>
+        <div class="step-title">
+          <h2>Check availability</h2>
+          <p>
+            Here's our live booking calendar — updated in real time. Find a date and
+            time that works, then move to step 2 below to request it.
+          </p>
+        </div>
+      </div>
+
+      <div class="embed-frame">
+        <div class="calendar-wrapper">
+          <iframe
+            src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&showPrint=0&mode=WEEK&title=Rent%20CCC&src=Y2NjdHVyaW5AZ21haWwuY29t&color=%23f6bf26"
+            title="CCC Rental Availability Calendar"
+            frameborder="0"
+            scrolling="no"
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="embed-note">
+          <span class="dot"></span>
+          <span>Calendar loads directly from Google — switch between week, month, and agenda views using the controls in the top-right of the calendar.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="step-divider">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"/>
+        <polyline points="19 12 12 19 5 12"/>
+      </svg>
+    </div>
+
+    <!-- STEP 2: FORM -->
+    <div class="step reveal d-2">
+      <div class="step-head">
+        <span class="step-num">02</span>
+        <div class="step-title">
+          <h2>Submit your request</h2>
+          <p>
+            Once you've picked an available time slot, fill out the form below.
+            We'll get back to you to confirm.
+          </p>
+        </div>
+      </div>
+
+      <div class="embed-frame">
+        <div class="zap-wrapper">
+          <iframe
+            src="https://interfaces.zapier.com/embed/page/cmiqg7pt0005qa4os8efvclzl?noBackground=false"
+            title="CCC Rental Request Form"
+            data-testid="cmiqg7pt0005qa4os8efvclzl-zapier-interfaces-page-embed-iframe"
+            frameborder="0"
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Questions band -->
+    <div class="questions-band">
+      <div>
+        <h3>Questions about a rental?</h3>
+        <p>If you need something the form doesn't cover — special setup, a recurring booking, an unusual time — just reach out directly.</p>
+      </div>
+      <div class="contact-inline">
+        <span class="k">Phone</span>
+        <a href="tel:+13157717968">315-771-7968</a>
+        <span class="k" style="margin-top:0.7rem;">Email</span>
+        <a href="mailto:cccturin@gmail.com">cccturin@gmail.com</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <p class="big">Rooted here.<br>Open to all.</p>
+      <p>A warm, welcoming space in the heart of Turin, New York.</p>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <p>4269 E Rd<br>Turin, NY 13473</p>
+      <p style="margin-top:0.8rem;">Sundays · 10:00 AM</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p><a href="tel:+13157717968">315-771-7968</a></p>
+      <p><a href="mailto:cccturin@gmail.com">cccturin@gmail.com</a></p>
+      <p style="margin-top:1.2rem;">
+        <a href="index.html">Home</a> · <a href="about.html">About</a><br>
+        <a href="events.html">Events</a> · <a href="youth-group.html">Youth Group</a><br>
+        <a href="rent-ccc.html">Rent CCC</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="yr"></span> Christian Community Center · 501(c)(3) Nonprofit</span>
+    <span>Turin, New York</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("yr").textContent = new Date().getFullYear();
+  // Safety net: force-reveal any stuck animation elements after 1.2s
+  setTimeout(function() {
+    document.querySelectorAll(".reveal, .reveal-slow").forEach(function(el) {
+      el.style.opacity = "1";
+      el.style.transform = "none";
+    });
+  }, 1200);
+</script>
+
+</body>
+</html>
