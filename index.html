@@ -15,6 +15,14 @@
 <style>
   /* =============== HOMEPAGE SPECIFIC =============== */
 
+  /* NAV LOGO IMAGE (overrides text mark) */
+  .brand-logo {
+    height: 42px;
+    width: auto;
+    display: block;
+    border-radius: 6px;
+  }
+
   /* HERO */
   .home-hero {
     padding: clamp(4rem, 12vh, 9rem) 0 clamp(3rem, 8vh, 6rem);
@@ -46,6 +54,17 @@
     .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   }
 
+  /* Logo mark above headline */
+  .hero-logo {
+    width: 88px;
+    height: 88px;
+    border-radius: 14px;
+    object-fit: cover;
+    margin-bottom: 1.6rem;
+    box-shadow: 0 12px 30px -14px rgba(92, 68, 50, 0.4);
+    display: block;
+  }
+
   .hero-title {
     font-size: clamp(3rem, 8vw, 6.2rem);
   }
@@ -56,19 +75,40 @@
     color: var(--sky-blue-deep);
   }
 
-  /* Building card - illustrated hero visual */
-  .building-card {
+  /* Verse card - hero visual replacing the illustration */
+  .verse-card {
     position: relative;
     aspect-ratio: 4 / 5;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    background: var(--sandstone);
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(122, 174, 196, 0.35) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 90%, rgba(122, 92, 69, 0.18) 0%, transparent 50%),
+      linear-gradient(155deg, #e6d8b8 0%, #c9b99a 60%, #b8a586 100%);
     box-shadow: 0 30px 60px -30px rgba(92, 68, 50, 0.4),
-                0 1px 0 rgba(255,255,255,0.4) inset;
+                0 1px 0 rgba(255,255,255,0.5) inset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(2rem, 4vw, 3.2rem);
+    text-align: center;
   }
-  .building-card svg { display: block; width: 100%; height: 100%; }
 
-  .building-card .badge {
+  /* Subtle texture overlay - tiny dots for warmth */
+  .verse-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(92, 68, 50, 0.08) 1px, transparent 0);
+    background-size: 18px 18px;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  .verse-card > * { position: relative; z-index: 1; }
+
+  .verse-card .badge {
     position: absolute;
     top: 1.3rem;
     left: 1.3rem;
@@ -84,13 +124,71 @@
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
+    z-index: 2;
   }
-  .building-card .badge::before {
+  .verse-card .badge::before {
     content: '';
     width: 8px;
     height: 8px;
     background: var(--sky-blue);
     border-radius: 50%;
+  }
+
+  .verse-logo {
+    width: clamp(110px, 18vw, 150px);
+    height: clamp(110px, 18vw, 150px);
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--linen);
+    box-shadow: 0 16px 36px -16px rgba(92, 68, 50, 0.5),
+                0 0 0 6px rgba(242, 237, 228, 0.55);
+    margin-bottom: clamp(1.4rem, 3vw, 2rem);
+  }
+
+  /* Decorative divider */
+  .verse-divider {
+    width: 36px;
+    height: 1px;
+    background: var(--warm-brown);
+    opacity: 0.45;
+    margin: 0 0 clamp(1.2rem, 2.5vw, 1.6rem);
+  }
+
+  .verse-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: var(--w-light);
+    font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+    line-height: 1.45;
+    color: var(--ink);
+    max-width: 32ch;
+    margin: 0 0 clamp(1.2rem, 2.5vw, 1.6rem);
+    letter-spacing: -0.005em;
+    position: relative;
+  }
+
+  .verse-text .openquote {
+    font-family: var(--font-display);
+    font-weight: var(--w-bold);
+    font-style: italic;
+    font-size: 2.4em;
+    line-height: 0;
+    color: var(--sky-blue-deep);
+    vertical-align: -0.35em;
+    margin-right: 0.04em;
+  }
+
+  .verse-ref {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: var(--w-med);
+  }
+
+  @media (max-width: 900px) {
+    .verse-card { aspect-ratio: 5 / 4; max-width: 520px; margin: 0 auto; }
   }
 
   /* INFO STRIP */
@@ -104,6 +202,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
+    align-items: center;
   }
   @media (max-width: 780px) {
     .info-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -124,6 +223,22 @@
     letter-spacing: -0.01em;
   }
   .info-item .sub { font-size: 0.9rem; color: var(--ink-soft); }
+
+  /* Address row with building thumbnail */
+  .info-find {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+  }
+  .info-find img {
+    width: 84px;
+    height: 84px;
+    border-radius: 12px;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 10px 24px -12px rgba(92, 68, 50, 0.45);
+  }
+  .info-find .info-text { display: flex; flex-direction: column; gap: 0.4rem; }
 
   /* OFFERINGS - three feature cards */
   .offerings {
@@ -355,7 +470,7 @@
 <header class="nav">
   <div class="nav-inner">
     <a href="index.html" class="brand">
-      <span class="brand-mark">CCC</span>
+      <img src="logo.jpg" alt="Christian Community Center logo" class="brand-logo" />
       <span>Christian Community Center</span>
     </a>
     <button class="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
@@ -398,90 +513,14 @@
       </div>
 
       <div class="reveal-slow">
-        <div class="building-card">
+        <div class="verse-card">
           <span class="badge">Join Us!</span>
-          <!-- Stylized illustration of a simple community building -->
-          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#b8cdd6"/>
-                <stop offset="60%" stop-color="#9DAAB0"/>
-                <stop offset="100%" stop-color="#c9b99a"/>
-              </linearGradient>
-              <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#d9c9a8"/>
-                <stop offset="100%" stop-color="#b8a586"/>
-              </linearGradient>
-              <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#8a6950"/>
-                <stop offset="100%" stop-color="#5c4432"/>
-              </linearGradient>
-              <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#a4a887"/>
-                <stop offset="100%" stop-color="#7a8068"/>
-              </linearGradient>
-            </defs>
-
-            <!-- Sky -->
-            <rect x="0" y="0" width="400" height="340" fill="url(#sky)"/>
-
-            <!-- Sun -->
-            <circle cx="310" cy="90" r="34" fill="#F2EDE4" opacity="0.55"/>
-            <circle cx="310" cy="90" r="22" fill="#F2EDE4" opacity="0.75"/>
-
-            <!-- Distant tree line -->
-            <path d="M0,285 Q30,265 55,278 Q85,258 115,275 Q145,260 175,275 Q210,258 245,278 Q280,262 310,278 Q340,265 400,280 L400,340 L0,340 Z" fill="#7A5C45" opacity="0.25"/>
-
-            <!-- Ground -->
-            <rect x="0" y="330" width="400" height="170" fill="url(#grass)"/>
-
-            <!-- Building shadow -->
-            <ellipse cx="200" cy="420" rx="165" ry="10" fill="#000" opacity="0.15"/>
-
-            <!-- Building body -->
-            <rect x="60" y="220" width="280" height="190" fill="url(#wall)"/>
-
-            <!-- Roof -->
-            <polygon points="45,225 200,120 355,225" fill="url(#roof)"/>
-            <polygon points="45,225 200,120 355,225 355,240 200,138 45,240" fill="#000" opacity="0.12"/>
-
-            <!-- Cross on gable -->
-            <rect x="196" y="148" width="8" height="34" fill="#F2EDE4"/>
-            <rect x="186" y="158" width="28" height="7" fill="#F2EDE4"/>
-
-            <!-- Door -->
-            <rect x="180" y="300" width="40" height="110" fill="#5c4432"/>
-            <rect x="184" y="305" width="32" height="100" fill="#7A5C45"/>
-            <circle cx="212" cy="358" r="1.8" fill="#C9B99A"/>
-            <!-- Door arch top -->
-            <path d="M180,300 Q200,285 220,300 Z" fill="#5c4432"/>
-
-            <!-- Windows -->
-            <g>
-              <rect x="95" y="260" width="46" height="68" fill="#7AAEC4" opacity="0.75"/>
-              <rect x="95" y="260" width="46" height="68" fill="none" stroke="#5c4432" stroke-width="3"/>
-              <line x1="118" y1="260" x2="118" y2="328" stroke="#5c4432" stroke-width="2"/>
-              <line x1="95" y1="294" x2="141" y2="294" stroke="#5c4432" stroke-width="2"/>
-            </g>
-            <g>
-              <rect x="259" y="260" width="46" height="68" fill="#7AAEC4" opacity="0.75"/>
-              <rect x="259" y="260" width="46" height="68" fill="none" stroke="#5c4432" stroke-width="3"/>
-              <line x1="282" y1="260" x2="282" y2="328" stroke="#5c4432" stroke-width="2"/>
-              <line x1="259" y1="294" x2="305" y2="294" stroke="#5c4432" stroke-width="2"/>
-            </g>
-
-            <!-- Foundation line -->
-            <rect x="60" y="405" width="280" height="8" fill="#5c4432"/>
-
-            <!-- Path to door -->
-            <polygon points="180,410 220,410 240,500 160,500" fill="#C9B99A" opacity="0.7"/>
-
-            <!-- Trees -->
-            <circle cx="30" cy="360" r="30" fill="#7a8068"/>
-            <rect x="27" y="380" width="6" height="25" fill="#5c4432"/>
-            <circle cx="375" cy="355" r="34" fill="#7a8068"/>
-            <rect x="372" y="380" width="6" height="28" fill="#5c4432"/>
-          </svg>
+          <img src="logo.jpg" alt="Christian Community Center logo" class="verse-logo" />
+          <div class="verse-divider"></div>
+          <p class="verse-text">
+            <span class="openquote">&ldquo;</span>By this all men will know that you are My disciples, if you have love for one another.&rdquo;
+          </p>
+          <span class="verse-ref">John 13:35 · NASB1995</span>
         </div>
       </div>
     </div>
@@ -516,10 +555,13 @@
         <span class="val">10:00 AM</span>
         <span class="sub">Every Sunday morning</span>
       </div>
-      <div class="info-item reveal d-2">
-        <span class="label">Find us</span>
-        <span class="val">4269 E Rd</span>
-        <span class="sub">Turin, NY 13473</span>
+      <div class="info-find reveal d-2">
+        <img src="building.jpg" alt="The Christian Community Center building in Turin, NY" />
+        <div class="info-text">
+          <span class="label">Find us</span>
+          <span class="val">4269 E Rd</span>
+          <span class="sub">Turin, NY 13473</span>
+        </div>
       </div>
       <div class="info-item reveal d-3">
         <span class="label">Get in touch</span>
