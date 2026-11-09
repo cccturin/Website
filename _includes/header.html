@@ -1,0 +1,21 @@
+<!-- =================== NAV ===================
+     Shared header. Edit _includes/header.html to change it on every page.
+     Each page sets `nav:` in its front matter to highlight the current link. -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      {% if page.nav == "home" %}<img src="logo.jpg" alt="Christian Community Center logo" class="brand-logo" />{% else %}<span class="brand-mark">CCC</span>{% endif %}
+      <span>Christian Community Center</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"{% if page.nav == "home" %} class="active"{% endif %}>Home</a></li>
+      <li><a href="about.html"{% if page.nav == "about" %} class="active"{% endif %}>About</a></li>
+      <li><a href="events.html"{% if page.nav == "events" %} class="active"{% endif %}>Events</a></li>
+      <li><a href="youth-group.html"{% if page.nav == "youth" %} class="active"{% endif %}>Youth Group</a></li>
+      <li><a href="facility.html" class="nav-cta{% if page.nav == "facility" %} active{% endif %}">Book the Building</a></li>
+    </ul>
+  </div>
+</header>
