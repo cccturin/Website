@@ -1,3 +1,7 @@
+---
+layout: null
+nav: facility
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -211,25 +215,7 @@
 </head>
 <body>
 
-<!-- NAV -->
-<header class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="brand">
-      <span class="brand-mark">CCC</span>
-      <span>Christian Community Center</span>
-    </a>
-    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="events.html">Events</a></li>
-      <li><a href="youth-group.html">Youth Group</a></li>
-      <li><a href="facility.html" class="active">Facility Use</a></li>
-    </ul>
-  </div>
-</header>
+{% include header.html %}
 
 <main>
 
@@ -338,45 +324,7 @@
 
 </main>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div>
-      <p class="big">Rooted here.<br>For our neighbors.</p>
-      <p>A church for southern Lewis County - Turin, New York.</p>
-    </div>
-    <div>
-      <h4>Visit</h4>
-      <p>4269 E Rd<br>Turin, NY 13473</p>
-      <p style="margin-top:0.8rem;">Sundays · 10:00 AM</p>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <p><a href="tel:+13157717968">315-771-7968</a></p>
-      <p><a href="mailto:cccturin@gmail.com">cccturin@gmail.com</a></p>
-      <p style="margin-top:1.2rem;">
-        <a href="index.html">Home</a> · <a href="about.html">About</a><br>
-        <a href="events.html">Events</a> · <a href="youth-group.html">Youth Group</a><br>
-        <a href="facility.html">Facility Use</a>
-      </p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© <span id="yr"></span> Christian Community Center · 501(c)(3) Nonprofit · EIN 26-2725886</span>
-    <span>Mailing address: 6458 E Main St, Turin, NY 13473</span>
-  </div>
-</footer>
-
-<script>
-  document.getElementById("yr").textContent = new Date().getFullYear();
-  // Safety net: force-reveal any stuck animation elements after 1.2s
-  setTimeout(function() {
-    document.querySelectorAll(".reveal, .reveal-slow").forEach(function(el) {
-      el.style.opacity = "1";
-      el.style.transform = "none";
-    });
-  }, 1200);
-</script>
+{% include footer.html %}
 
 </body>
 </html>
