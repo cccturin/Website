@@ -2,14 +2,42 @@
 
 Static site for Christian Community Center, Turin, NY.
 
+## How pages are built (shared header and footer)
+
+GitHub Pages runs Jekyll on this repo automatically. The navigation bar and the
+footer each live in one file, and every page pulls them in:
+
+- `_includes/header.html` — the nav bar, including the "Book the Building" button
+- `_includes/footer.html` — the footer: address, contact, EIN, mailing address,
+  the "Powered by Quantify" credit, and the footer script
+
+Change the nav, footer, email, phone, or address there once and it updates on
+every page. Each page starts with a small block like this:
+
+```
+---
+layout: null
+nav: about
+---
+```
+
+`nav` tells the header which link to highlight (`home`, `about`, `events`,
+`youth`, or `facility`). `layout: null` keeps GitHub Pages from wrapping the
+page in a theme. Leave both in place. In the page body, `{% include header.html %}`
+and `{% include footer.html %}` mark where the shared pieces go.
+
 ## Files
 
 - `index.html` — Homepage (includes featured event promo banner)
 - `about.html` — About page
 - `events.html` — Upcoming events (featured event + details, drop-off info)
 - `youth-group.html` — Youth Group info
-- `rent-ccc.html` — Rental page with live Google Calendar + Zapier request form
+- `facility.html` — Facility Use page with live Google Calendar + Zapier request form
+- `rent-ccc.html` — Redirect from the old rental URL to `facility.html` (keeps old links working)
 - `styles.css` — Shared stylesheet (brand tokens, nav, footer, base styles)
+- `_includes/header.html`, `_includes/footer.html` — Shared nav and footer (see above)
+- `_config.yml` — Jekyll settings
+- `quantify-logo-white.png` — Logo for the footer credit
 
 ## Deploy to GitHub Pages
 
@@ -52,9 +80,9 @@ Both loaded from Google Fonts via `<link>` in each page's `<head>`.
 
 All page content lives directly in the HTML — no build step, no framework. Open any `.html` file in a text editor and edit the text. Common edits:
 
-- **Phone / email / address:** appear in the footer of every page and on `about.html` and `index.html`. Search for `315-771-7968` or `cccturin@gmail.com` to find them.
+- **Phone / email / address:** the footer copy lives in `_includes/footer.html`; they also appear in the body of `about.html` and `index.html`. Search for `315-771-7968` or `cccturin@gmail.com` to find them.
 - **Youth group schedule:** edit `youth-group.html` — the schedule panel is near the top.
-- **Rental embeds:** the Google Calendar `<iframe>` and Zapier form `<iframe>` live in `rent-ccc.html`. If those URLs change, replace the `src` attributes.
+- **Rental embeds:** the Google Calendar `<iframe>` and Zapier form `<iframe>` live in `facility.html`. If those URLs change, replace the `src` attributes.
 - **Events:** edit `events.html` to update the featured event. The homepage promo banner (the "May 02" card) is in `index.html` — search for `EVENT PROMO` to find it. When the Give & Take passes, either swap in the next event's details or remove both blocks and set the homepage promo / events page to a "no upcoming events" state.
 
 ## Accessibility notes
