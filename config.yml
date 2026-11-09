@@ -1,0 +1,5 @@
+# Jekyll settings for GitHub Pages.
+# The shared header and footer live in _includes/ and are inserted into
+# every page when GitHub Pages builds the site.
+exclude:
+  - README.md
