@@ -212,6 +212,33 @@ p { font-weight: var(--w-light); }
 .nav-links a:hover::after,
 .nav-links a.active::after { width: 100%; }
 
+/* Nav call-to-action button (Book the Building) */
+.nav-links a.nav-cta {
+  white-space: nowrap;
+  background: var(--warm-brown);
+  color: var(--linen);
+  padding: 0.65rem 1.15rem;
+  border-radius: var(--radius);
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.nav-links a.nav-cta::after { display: none; }
+.nav-links a.nav-cta:hover,
+.nav-links a.nav-cta.active {
+  background: var(--warm-brown-deep);
+  color: var(--linen);
+}
+.nav-links a.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px -12px rgba(92, 68, 50, 0.55);
+}
+.nav-links a.nav-cta:focus-visible {
+  outline: 2px solid var(--sky-blue);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-links a.nav-cta:hover { transform: none; }
+}
+
 .nav-toggle {
   display: none;
   background: none;
@@ -222,7 +249,7 @@ p { font-weight: var(--w-light); }
 }
 .nav-toggle svg { display: block; }
 
-@media (max-width: 720px) {
+@media (max-width: 960px) {
   .nav-toggle { display: block; }
   .nav-links {
     position: absolute;
@@ -496,4 +523,30 @@ a:hover { color: var(--warm-brown); }
 ::selection {
   background: var(--sky-blue);
   color: var(--linen);
+}
+
+/* "Powered by Quantify" credit at the very bottom of the footer */
+.footer-credit {
+  max-width: var(--container);
+  margin: 1.6rem auto 0;
+  padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.footer-credit a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+  color: var(--linen);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.3s var(--ease);
+}
+.footer-credit a:hover,
+.footer-credit a:focus-visible { opacity: 1; color: var(--linen); }
+.footer-credit img { height: 26px; width: auto; display: block; }
+@media (max-width: 720px) {
+  .footer-credit { justify-content: flex-start; }
 }
