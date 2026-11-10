@@ -80,7 +80,7 @@ Both loaded from Google Fonts via `<link>` in each page's `<head>`.
 
 All page content lives directly in the HTML — no build step, no framework. Open any `.html` file in a text editor and edit the text. Common edits:
 
-- **Phone / email / address:** the footer copy lives in `_includes/footer.html`; they also appear in the body of `about.html` and `index.html`. Search for `315-771-7968` or `cccturin@gmail.com` to find them.
+- **Phone / email / address:** the footer copy lives in `_includes/footer.html`; they also appear in the body of `about.html` and `index.html`. Search for `315-771-7968` or `info@cccturin.com` to find them.
 - **Youth group schedule:** edit `youth-group.html` — the schedule panel is near the top.
 - **Rental embeds:** the Google Calendar `<iframe>` and Zapier form `<iframe>` live in `facility.html`. If those URLs change, replace the `src` attributes.
 - **Events:** edit `events.html` to update the featured event. The homepage promo banner (the "May 02" card) is in `index.html` — search for `EVENT PROMO` to find it. When the Give & Take passes, either swap in the next event's details or remove both blocks and set the homepage promo / events page to a "no upcoming events" state.
